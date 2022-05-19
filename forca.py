@@ -1,9 +1,21 @@
 def jogar():
+    import random
+
     print("*********************************")
     print("***Bem vindo ao jogo de Forca!***")
     print("*********************************")
 
-    palavra_secreta = "banana".upper()
+    #arquivo = open("palavras.txt", "r") - modo alternativo para abertura de arquivo
+    palavras = []
+    with open("palavras.txt") as arquivo:
+        for linha in arquivo:
+            linha = linha.strip()
+            palavras.append(linha)
+
+    #arquivo.close() - modo alternativo para fechamento do aquivo
+    #O modo implementado para abertura do arquivi permite q o python feche o mesmo automaticamente em caso de erro
+
+    palavra_secreta = random.choice(palavras).upper()
     letras_acertadas = ["_"] * len(palavra_secreta)
     #alternativamente: letras_acertadas = ["_" for letra in palavra_secreta]
 
